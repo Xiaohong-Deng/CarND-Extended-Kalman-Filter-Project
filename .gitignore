@@ -1,3 +1,4 @@
+
 # silly macOS
 .DS_Store
 
@@ -6,6 +7,9 @@ build/
 
 # editor config
 .vscode/
+.idea/
+
+cmake-build-debug/
 
 # Xcode
 *.pbxuser
