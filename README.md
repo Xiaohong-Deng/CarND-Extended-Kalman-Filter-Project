@@ -39,7 +39,8 @@ OUTPUT: values provided by the c++ program to the simulator
 ["rmse_vy"]
 
 ---
-
+## Notes on This Project
+Given z is the readings from the sensor at time step k, x is the prediction for time step k, H is the linear transformation matrix that maps x to measurement space, residual y = z - H * x. This is the case for naive Kalman Filter. If the mapping is nonlinear, H * x becomes h(x). So we use first order Taylor Expansion, which is linear, to approximate the residual y = z - (h(xk) + Hj * (x - xk)), where xk is our prediction for time step k, Hj is the Jacobian matrix. Note x in both residual forms is a random variable for ground truth. The approximation is good if x is close to xk. In other words, our process noise is small. When calculating this, x is equal to xk at each time step, so y = z - h(xk). It looks odd. Seems we are not linearizing it. Say we let x take a value that is slightly larger than xk, xk + dx. The residual is y = z - h(xk + dx) and y = z - (h(xk) + Hj * dt) for nonlinear and linear approximation cases, respectively.
 ## Other Important Dependencies
 
 * cmake >= 3.5
